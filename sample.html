@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Progress sample page</title>
+   <script type="text/javascript" charset="utf-8" src="progress.js"></script>
+   <script type="text/javascript" charset="utf-8" src="progress_border_circle.js"></script>
+</head>
+<style type="text/css" media="all">
+   header {
+      background: #aaa;
+   }
+   footer {
+      background: black;
+      color: white;
+   }
+   footer h1 {
+      font-size: 1em;
+      font-weight: normal;
+   }
+   header, footer {
+      width: 100%;
+      padding: 1em;
+      margin: 0;
+   }
+</style>
+<body>
+   <header>
+      <h1>Progress sample page</h1>
+   </header>
+   <section id="main">
+      <h1>Out component is here</h1>
+      <p>
+         <progress min="0" max="100" value="45" id="progress" onchange="changed"/>
+      <p>
+      <p>
+         <label for="value">Value:</label>
+         <input type="number" id="value" min="0" max="100" value="45"/>
+      </p>
+   </section>
+   <footer>
+      <h1>Here's the footer</h1>
+   </footer>
+   <script type="text/javascript" charset="utf-8">
+      var prog = new Progress("progress");
+      prog.empty_color = "#ccc";
+      prog.complete_colors = ["#00c000", "#ff8000", "#c00000"];
+      prog.render();
+
+      document.getElementById("value").addEventListener("change", function() {
+         var val = parseInt(document.getElementById("value").value);
+         prog.value(val);
+      });
+   </script>
+</body>
+</html>
